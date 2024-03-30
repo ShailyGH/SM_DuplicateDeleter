@@ -36,7 +36,24 @@ public final class IntegerDuplicateDeleter extends DuplicateDeleter<Integer>
 
     public Integer[] removeDuplicatesExactly(int number)
     {
-        return null;
+        Integer[] tempArray = new Integer[array.length];
+        Integer newArrayIndex = 0;
+        Integer counter;
+
+        for (int a : array)
+        {
+            counter = arrayCounter(a);
+            if(!counter.equals(number))
+            {
+                tempArray[newArrayIndex] = a;
+                newArrayIndex ++;
+            }
+        }
+
+        Integer[] finalArray = new Integer[newArrayIndex];
+
+        System.arraycopy(tempArray, 0, finalArray, 0, newArrayIndex);
+        return  finalArray;
     }
 
     public int arrayCounter(int number)
