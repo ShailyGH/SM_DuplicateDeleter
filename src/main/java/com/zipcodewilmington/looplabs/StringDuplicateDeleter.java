@@ -39,7 +39,24 @@ public final class StringDuplicateDeleter extends DuplicateDeleter<String>
     @Override
     public String[] removeDuplicatesExactly(int exactNumberOfDuplications)
     {
-        return null;
+        String[] tempArray = new String[array.length];
+        Integer newArrayIndex = 0;
+        Integer counter;
+
+        for (String a : array)
+        {
+            counter = arrayCounter(a);
+            if(!counter.equals(exactNumberOfDuplications))
+            {
+                tempArray[newArrayIndex] = a;
+                newArrayIndex ++;
+            }
+        }
+
+        String[] finalArray = new String[newArrayIndex];
+
+        System.arraycopy(tempArray, 0, finalArray, 0, newArrayIndex);
+        return  finalArray;
     }
 
     public int arrayCounter(String myString)
