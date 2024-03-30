@@ -16,7 +16,24 @@ public final class StringDuplicateDeleter extends DuplicateDeleter<String>
     @Override
     public String[] removeDuplicates(int maxNumberOfDuplications)
     {
-        return null;
+        String[] tempArray = new String[array.length];
+        Integer newArrayIndex = 0;
+        Integer counter;
+
+        for (String a : array)
+        {
+            counter = arrayCounter(a);
+            if(counter < maxNumberOfDuplications)
+            {
+                tempArray[newArrayIndex] = a;
+                newArrayIndex ++;
+            }
+        }
+
+        String[] finalArray = new String[newArrayIndex];
+
+        System.arraycopy(tempArray, 0, finalArray, 0, newArrayIndex);
+        return  finalArray;
     }
 
     @Override
@@ -27,7 +44,15 @@ public final class StringDuplicateDeleter extends DuplicateDeleter<String>
 
     public int arrayCounter(String myString)
     {
-        return 0;
+        int counter = 0;
+        for (String a : array)
+        {
+            if(a.equals(myString))
+            {
+                counter ++;
+            }
+        }
+        return counter;
     }
 
 }
